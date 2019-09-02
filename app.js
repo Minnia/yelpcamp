@@ -18,7 +18,7 @@ Comment = require("./models/comment.js");
 User = require("./models/user.js");
 
 mongoose.connect(
-  "mongodb+srv://JasmineP:process.env.MONGOOSE_CONNECTION_PASSWORD@yelpcamp-gsdfx.mongodb.net/yelp_camp?retryWrites=true&w=majority",
+  `mongodb+srv://JasmineP:${process.env.MONGOOSE_CONNECTION_PASSWORD}@yelpcamp-gsdfx.mongodb.net/yelp_camp?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true
   }
