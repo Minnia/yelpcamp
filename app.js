@@ -17,9 +17,12 @@ Campground = require("./models/campground.js");
 Comment = require("./models/comment.js");
 User = require("./models/user.js");
 
-mongoose.connect("mongodb://localhost:27017/yelp_camp", {
-  useNewUrlParser: true
-});
+mongoose.connect(
+  "mongodb+srv://JasmineP:process.env.MONGOOSE_CONNECTION_PASSWORD@yelpcamp-gsdfx.mongodb.net/test?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true
+  }
+);
 
 app.use(
   require("express-session")({
