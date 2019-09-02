@@ -8,6 +8,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const localStrategy = require("passport-local");
 const methodOverride = require("method-override");
+const PORT = process.env.PORT || 3000;
 
 const commentRoutes = require("./routes/comments.js");
 const campgroundRoutes = require("./routes/campgrounds.js");
@@ -59,6 +60,6 @@ app.use(campgroundRoutes);
 app.use(authRoutes);
 app.set("view engine", "ejs");
 
-app.listen(8080, () => {
-  console.log("Server listening to port 80");
+app.listen(PORT, () => {
+  console.log(`Server listening to ${PORT}`);
 });
