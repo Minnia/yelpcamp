@@ -1,0 +1,51 @@
+<% include ../partials/header%>
+<link href="/app.css" type="text/css" />
+
+<div class="container">
+  <h1>
+    Create a new campground
+  </h1>
+  <div class="row">
+    <form action="/campgrounds" method="POST" enctype="multipart/form-data">
+      <input
+        class="form-control"
+        type="text"
+        name="campground[name]"
+        placeholder="name"
+      />
+      <input
+        class="form-control"
+        type="file"
+        name="image"
+        accept="image/*"
+        required
+      />
+      <input
+        class="form-control"
+        type="text"
+        name="campground[description]"
+        placeholder="description"
+      />
+      <input
+        class="form-control"
+        type="number"
+        name="campground[price]"
+        placeholder="price"
+      />
+
+      <input
+        class="form-control"
+        type="text"
+        name="location"
+        id="location"
+        placeholder="location"
+      />
+      <button class="btn btn-lg btn-primary">
+        Submit
+      </button>
+    </form>
+  </div>
+  <a href="/campgrounds">Go back</a>
+</div>
+
+<% include ../partials/footer%>

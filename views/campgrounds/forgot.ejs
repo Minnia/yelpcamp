@@ -1,0 +1,24 @@
+<% include ../partials/header%>
+<link href="/app.css" type="text/css" />
+
+<div class="container">
+  <h1>
+    Forgot you password?
+  </h1>
+  <p>Write your email below and we'll send you a new one!</p>
+  <div class="row">
+    <form action="/forgot" method="POST">
+      <input
+        class="form-control"
+        type="email"
+        name="email"
+        placeholder="email"
+      />
+      <button class="btn btn-lg btn-primary">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+<% include ../partials/footer%>

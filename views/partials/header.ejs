@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>YelpCamp</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <a class="navbar-brand" href="/"
+        >YelpCamp <i class="fas fa-campground"></i
+      ></a>
+      <button
+        class="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#navLinks"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse navbar-right" id="navLinks">
+        <ul class="nav navbar-nav">
+          <%if(currentUser){%>
+          <li class="nav-item">
+            <a class="nav-links" href="/logout">Log out</a>
+          </li>
+          <li class="nav-item">Signed in as <%= currentUser.username%></li>
+          <% }else{ %>
+          <li class="nav-item">
+            <a class="nav-links" href="/login"
+              ><i class="fas fa-user-friends"></i> Log in</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-links" href="/register"
+              >Sign up <i class="far fa-user"></i
+            ></a>
+          </li>
+          <%}%>
+        </ul>
+      </div>
+    </nav>
+    <%if(error && error.length > 0){%>
+    <div class="container">
+      <div class="alert alert-danger" role="alert"><%=error%></div>
+    </div>
+    <%}%> <%if(success && success.length > 0) {%>
+    <div class="container">
+      <div class="alert alert-success" role="alert"><%=success%></div>
+    </div>
+    <%}%>
+  </body>
+
+  <script src="https://kit.fontawesome.com/a94ceaf93d.js"></script>
+</html>

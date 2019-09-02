@@ -1,0 +1,23 @@
+<% include ./partials/header.ejs %>
+
+  <h1 class="center">Login</h1>
+  <form action="/login" method="POST">
+    <input
+      class="width-form form-control"
+      type="text"
+      name="username"
+      placeholder="username"
+    />
+    <input
+      class="width-form form-control"
+      type="password"
+      name="password"
+      placeholder="password"
+    />
+    <button class="btn btn-md btn-success">Login</button>
+    <a href="/forgot">Forgot your password?</a>
+  </form>
+  
+</div>
+
+<% include ./partials/footer.ejs %>

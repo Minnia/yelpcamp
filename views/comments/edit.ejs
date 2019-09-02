@@ -1,0 +1,30 @@
+<% include ../partials/header%>
+
+<div class="container">
+  <h2>
+    Edit Comment
+  </h2>
+  <div class="row container" id="commentsForm">
+    <form action="/campgrounds/<%= campground_id%>/comments/<%=comment._id%>"?_method="PUT" method="POST">
+      <input
+        class="form-control"
+        type="text"
+        name="comment[text]"
+        value="<%=comment.text%>"
+      />
+      <!--Is not needed as author's name is prefilled with req.user in ./routes/comments.js-->
+      <!--<input
+        class="form-control"
+        type="text"
+        name="comment[author]"
+        placeholder="author"
+      />--> 
+      <button class="btn btn-lg btn-primary" id="submitComment">
+        Submit
+      </button>
+    </form>
+  </div>
+  <a href="/campgrounds">Go back</a>
+</div>
+
+<% include ../partials/footer%>

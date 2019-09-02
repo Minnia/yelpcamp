@@ -1,0 +1,51 @@
+<% include ../partials/header%>
+<link href="/app.css" type="text/css" />
+
+<div class="container">
+  <h1>
+    Edit <%= campground.name %>
+  </h1>
+  <div class="row">
+    <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
+      <input
+        class="form-control"
+        type="text"
+        name="campground[name]"
+        value="<%= campground.name %>"
+      />
+      <input
+        class="form-control"
+        type="text"
+        name="campground[image]"
+        value="<%=campground.image%>"
+      />
+      <input
+        class="form-control"
+        type="text"
+        name="campground[description]"
+        value="<%=campground.description%>"
+      />
+      <input
+        class="form-control"
+        type="number "
+        name="campground[price]"
+        value="<%=campground.price%>"
+      />
+
+      <input
+        class="form-control"
+        type="text"
+        name="location"
+        id="location"
+        value="<%campground.location%>"
+      />
+
+      <button class="btn btn-lg btn-primary">
+        Submit
+      </button>
+    </form>
+  </div>
+  <a href="/campgrounds">Go back</a>
+</div>
+
+<% include ../partials/footer%>

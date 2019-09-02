@@ -1,0 +1,81 @@
+body {
+  background-color: #000;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+nav {
+  z-index: 1;
+}
+
+.slideshow {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite;
+}
+
+.slideshow li:nth-child(1) {
+  background-image: url(https://amp.businessinsider.com/images/5aeb7f9a19ee8651008b4850-750-563.jpg);
+}
+.slideshow li:nth-child(2) {
+  background-image: url(https://s3-us-west-1.amazonaws.com/metromile-www-assets/wp-content/uploads/2018/07/19205945/The-Top-5-Camping-Spots-in-Northern-California.jpg);
+  animation-delay: 10s;
+}
+.slideshow li:nth-child(3) {
+  background-image: url(https://i0.wp.com/activenorcal.com/wp-content/uploads/2018/08/IMG_9332.jpg?resize=980%2C653&ssl=1);
+  animation-delay: 19s;
+}
+.slideshow li:nth-child(4) {
+  background-image: url(https://www.brownhillestate.com.au/assets/client/Image/top-camping-spots-margaret-river.jpg);
+  animation-delay: 29s;
+}
+.slideshow li:nth-child(5) {
+  background-image: url(https://www.backpackerguide.nz/wp-content/uploads/2017/06/pexels-photo-723585.jpeg);
+  animation-delay: 39s;
+}
+
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+}
