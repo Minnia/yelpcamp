@@ -64,29 +64,33 @@ router.post(
       body: { location, campground },
       file
     } = req;
-    const [features] = await geo.geocode("mapbox.places", location);
-    const coordinates = {
-      lng: features.geometry.coordinates[0],
-      lat: features.geometry.coordinates[1]
-    };
-    const campgroundImage = await cloudinary.uploader.upload(file.path);
-    campground.image = campgroundImage.secure_url;
-    campground.author = {
-      id: userId,
-      user: username
-    };
-    if (err || !data) {
-      req.flash("error", "Oops!");
-      return res.redirect("back");
+    try {
+      const [features] = await geo.geocode("mapbox.places", location);
+      const coordinates = {
+        lng: features.geometry.coordinates[0],
+        lat: features.geometry.coordinates[1]
+      };
+
+      const campgroundImage = await cloudinary.uploader.upload(file.path);
+      campground.image = campgroundImage.secure_url;
+      campground.author = {
+        id: userId,
+        user: username
+      };
+      const { lng, lat } = coordinates;
+      const newCampground = {
+        ...campground,
+        lng,
+        lat,
+        location: features.place_name
+      };
+
+      await Campground.create(newCampground);
+      console.log("Campground was created");
+    } catch (err) {
+      req.flash("error", "Something");
+      res.redirect("back");
     }
-    const { lng, lat } = coordinates;
-    const newCampground = {
-      ...campground,
-      lng,
-      lat,
-      location: features.place_name
-    };
-    await Campground.create(newCampground);
   }
 );
 //NEW CAMPGROUND
