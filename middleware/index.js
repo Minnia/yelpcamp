@@ -1,7 +1,7 @@
 const Campground = require("../models/campground");
 const Comment = require("../models/comment");
 
-const checkCampgroundOwnership = async function(req, res, next) {
+const checkCampgroundOwnership = async (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
       const campground = await Campground.findById(req.params.id);
@@ -14,12 +14,12 @@ const checkCampgroundOwnership = async function(req, res, next) {
       next();
     }
   } catch (err) {
-    console.log(err);
+    req.flash("error", "Something went wrong, try again");
     res.redirect("/campgrounds");
   }
 };
 
-const checkCommentOwnership = async function(req, res, next) {
+const checkCommentOwnership = async (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
       const comment = await Comment.findById(req.params.comment_id);
@@ -38,7 +38,7 @@ const checkCommentOwnership = async function(req, res, next) {
   }
 };
 
-const isLoggedIn = async function(req, res, next) {
+const isLoggedIn = async (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
       return next();
