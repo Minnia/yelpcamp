@@ -1,25 +1,44 @@
 <% include ../partials/header.ejs%>
 <div class="row">
-<div class="col-md-4">
-<div class="thumbnail">
-<h1 id="userProfileNames"><%= user.firstName + " " + user.lastName%></h1>
-<img id="userProfileImage" src="<%= user.avatar%>" alt="user profile image">
-<div class="caption"><a href="mailto: <%= user.email%>"><%=user.email%></a></div>
-</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mauris erat, bibendum placerat eleifend vitae, viverra sed felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus hendrerit mollis lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus nec nisi vel dolor lobortis gravida. Morbi ullamcorper mauris a enim elementum sagittis. Sed id justo vulputate, dictum nulla nec, convallis nunc. Nullam semper nulla ut hendrerit sodales. Vestibulum erat massa, commodo a bibendum non, bibendum vitae ante.
-
-Duis id laoreet erat. Praesent laoreet purus quis quam gravida, ac ullamcorper tellus commodo. Donec sodales nulla nisl, nec mollis quam sollicitudin id. Etiam a suscipit metus. Nullam mattis sodales nisi, ac tincidunt sem cursus sit amet. Praesent cursus iaculis elit, eget vehicula risus sodales eget. Aenean eu turpis odio.
-
-Mauris facilisis hendrerit viverra. Proin ac efficitur mauris. Donec placerat, ante quis pharetra scelerisque, tellus magna rutrum ipsum, at posuere arcu elit quis odio. In elementum ac erat a pretium.</p>
-</div>
-<div class="col-md-8 user-description">
-<h3><%= user.username%>'s campgrounds</h3>
-<ul>
-<% campgrounds.forEach(function(campground){%>
-<a href="/campgrounds/<%=campground._id%>"><%=campground.name%></a>
-<%})%>
-</ul>
-</div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <h1 id="userProfileNames"><%= user.firstName + " " + user.lastName%></h1>
+      <img
+        id="userProfileImage"
+        src="<%= user.avatar%>"
+        alt="user profile image"
+      />
+      <div class="caption">
+        <a href="mailto: <%= user.email%>"><%=user.email%></a>
+      </div>
+    </div>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mauris
+      erat, bibendum placerat eleifend vitae, viverra sed felis. Lorem ipsum
+      dolor sit amet, consectetur adipiscing elit. Phasellus hendrerit mollis
+      lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+      posuere cubilia Curae; Vivamus nec nisi vel dolor lobortis gravida. Morbi
+      ullamcorper mauris a enim elementum sagittis. Sed id justo vulputate,
+      dictum nulla nec, convallis nunc. Nullam semper nulla ut hendrerit
+      sodales. Vestibulum erat massa, commodo a bibendum non, bibendum vitae
+      ante. Duis id laoreet erat. Praesent laoreet purus quis quam gravida, ac
+      ullamcorper tellus commodo. Donec sodales nulla nisl, nec mollis quam
+      sollicitudin id. Etiam a suscipit metus. Nullam mattis sodales nisi, ac
+      tincidunt sem cursus sit amet. Praesent cursus iaculis elit, eget vehicula
+      risus sodales eget. Aenean eu turpis odio. Mauris facilisis hendrerit
+      viverra. Proin ac efficitur mauris. Donec placerat, ante quis pharetra
+      scelerisque, tellus magna rutrum ipsum, at posuere arcu elit quis odio. In
+      elementum ac erat a pretium.
+    </p>
+  </div>
+  <div class="col-md-8 user-description">
+    <h3><%= user.username%>'s campgrounds</h3>
+    <ul>
+      <% campgrounds.forEach(function(campground){%>
+      <a href="/campgrounds/<%=campground._id%>"><%=campground.name%></a>
+      <%})%>
+    </ul>
+  </div>
 </div>
 
 <% include ../partials/footer.ejs%>
