@@ -86,7 +86,7 @@ router.post(
       };
 
       await Campground.create(newCampground);
-      console.log("Campground was created");
+      return res.redirect("/campgrounds");
     } catch (err) {
       req.flash("error", "Something went wrong");
       res.redirect("back");
