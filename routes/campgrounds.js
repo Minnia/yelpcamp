@@ -65,28 +65,31 @@ router.post(
       file
     } = req;
     try {
-      const [features] = await geo.geocode("mapbox.places", location);
-      const coordinates = {
-        lng: features.geometry.coordinates[0],
-        lat: features.geometry.coordinates[1]
-      };
+      geo.geocode("mapbox.places", location, async (err, data) => {
+        const [features] = data.features;
 
-      const campgroundImage = await cloudinary.uploader.upload(file.path);
-      campground.image = campgroundImage.secure_url;
-      campground.author = {
-        id: userId,
-        user: username
-      };
-      const { lng, lat } = coordinates;
-      const newCampground = {
-        ...campground,
-        lng,
-        lat,
-        location: features.place_name
-      };
+        const coordinates = {
+          lng: features.geometry.coordinates[0],
+          lat: features.geometry.coordinates[1]
+        };
 
-      await Campground.create(newCampground);
-      return res.redirect("/campgrounds");
+        const campgroundImage = await cloudinary.uploader.upload(file.path);
+        campground.image = campgroundImage.secure_url;
+        campground.author = {
+          id: userId,
+          user: username
+        };
+        const { lng, lat } = coordinates;
+        const newCampground = {
+          ...campground,
+          lng,
+          lat,
+          location: features.place_name
+        };
+
+        await Campground.create(newCampground);
+        return res.redirect("/campgrounds");
+      });
     } catch (err) {
       req.flash("error", "Something went wrong");
       res.redirect("back");
