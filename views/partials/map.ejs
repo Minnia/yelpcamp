@@ -1,0 +1,28 @@
+<script>
+  function init() {
+    var lat = "<%= campground.lat %>";
+    var lng = "<%= campground.lng %>";
+    var latlng = new google.maps.LatLng(lat, lng);
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: latlng,
+      zoom: 12
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    var marker = new google.maps.Marker({
+      position: latlng,
+      map: map
+    });
+    marker.addListener("click", function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script
+  async
+  defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuntJXMRFZgmM-Kzg0qJLKDU74ocQpTF4&callback= "
+></script>
